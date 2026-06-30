@@ -1,5 +1,14 @@
 # canvia-screenplay-rest-assured-cucumber-bdd
 
+[![CI](https://github.com/gpalominoh-canvia/canvia-screenplay-rest-assured-cucumber-bdd/actions/workflows/tests.yml/badge.svg)](https://github.com/gpalominoh-canvia/canvia-screenplay-rest-assured-cucumber-bdd/actions/workflows/tests.yml)
+[![Java 17](https://img.shields.io/badge/Java-17-007396?logo=openjdk&logoColor=white)](https://adoptium.net)
+[![Gradle 8.7](https://img.shields.io/badge/Gradle-8.7-02303A?logo=gradle&logoColor=white)](https://gradle.org)
+[![Serenity BDD 5.3.9](https://img.shields.io/badge/Serenity%20BDD-5.3.9-1f9bcf)](https://serenity-bdd.github.io)
+[![Cucumber 7](https://img.shields.io/badge/Cucumber-7-23D96C?logo=cucumber&logoColor=white)](https://cucumber.io)
+[![REST Assured](https://img.shields.io/badge/REST%20Assured-API-green)](https://rest-assured.io)
+[![Allure](https://img.shields.io/badge/Report-Allure-FF7B00)](https://allurereport.org)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 Curso práctico, **parte por parte**, para dominar la automatización de pruebas de **API**
 en **Java** usando **Serenity BDD** con el patrón **Screenplay**, **REST Assured** y
 **Cucumber/Gherkin** (BDD).
@@ -151,6 +160,20 @@ auth y CRUD completo. Credenciales públicas de práctica: `admin` / `password12
 > ⚠️ Es un servicio gratuito que a veces "duerme": si un test falla por timeout, reintenta.
 
 ---
+
+## Contribuir
+
+Las contribuciones son bienvenidas. Lee la **[Guía de contribución](CONTRIBUTING.md)**
+(usa Git Flow y Conventional Commits en español) y el
+**[Código de Conducta](CODE_OF_CONDUCT.md)**.
+
+- 🐛 ¿Encontraste un error? Abre un [issue de bug](.github/ISSUE_TEMPLATE/bug_report.md).
+- 💡 ¿Una idea? Abre una [propuesta de mejora](.github/ISSUE_TEMPLATE/feature_request.md).
+- 📋 Historial de cambios en el **[CHANGELOG](CHANGELOG.md)**.
+
+## Licencia
+
+Distribuido bajo licencia **MIT**. Ver [LICENSE](LICENSE) para más detalles.
 
 ## Autor
 

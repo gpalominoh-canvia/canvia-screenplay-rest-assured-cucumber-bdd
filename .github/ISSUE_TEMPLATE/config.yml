@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Documentación del curso
+    url: https://github.com/gpalominoh-canvia/canvia-screenplay-rest-assured-cucumber-bdd/tree/main/docs
+    about: Antes de abrir un issue, revisa los módulos del curso en docs/.

@@ -1,0 +1,82 @@
+plugins {
+    id 'java'
+    // Plugin de Serenity para Gradle: añade las tareas `test` agregada y `aggregate`
+    // que generan el reporte HTML viviente al terminar las pruebas.
+    id 'net.serenity-bdd.serenity-gradle-plugin' version '5.3.9'
+    // Plugin de Allure (Módulo 10): añade las tareas `allureReport` y `allureServe`.
+    id 'io.qameta.allure' version '2.12.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+// Java 17 mediante toolchain: Gradle localiza/descarga el JDK 17 aunque el `java`
+// del PATH sea otro. Serenity 4.x requiere Java 17 como mínimo.
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+ext {
+    serenityVersion = '5.3.9'
+}
+
+dependencies {
+    // --- Núcleo Serenity + Screenplay ---
+    testImplementation "net.serenity-bdd:serenity-core:${serenityVersion}"
+    testImplementation "net.serenity-bdd:serenity-screenplay:${serenityVersion}"
+
+    // Integración Screenplay <-> REST Assured (Tasks Get/Post/Put/Delete, CallAnApi...)
+    testImplementation "net.serenity-bdd:serenity-screenplay-rest:${serenityVersion}"
+
+    // --- Cucumber sobre Serenity + ejecución con JUnit 5 Platform ---
+    testImplementation "net.serenity-bdd:serenity-cucumber:${serenityVersion}"
+    testImplementation "net.serenity-bdd:serenity-junit5:${serenityVersion}"
+
+    // El engine de Cucumber para JUnit5 viene con scope `test` en el POM de Serenity
+    // (no transitivo), por eso lo declaramos explícitamente para poder usar @Suite.
+    testImplementation 'io.cucumber:cucumber-junit-platform-engine:7.34.2'
+    testImplementation 'org.junit.platform:junit-platform-suite:1.10.2'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.10.2'
+
+    // --- Aserciones legibles ---
+    testImplementation 'org.assertj:assertj-core:3.25.3'
+
+    // --- Serialización JSON <-> POJO (Módulo 4 en adelante) ---
+    testImplementation 'com.fasterxml.jackson.core:jackson-databind:2.17.1'
+
+    // --- Adapter de Allure para Cucumber (Módulo 10) ---
+    // Genera los allure-results al ejecutar; el reporte HTML lo arma el plugin Gradle.
+    testImplementation 'io.qameta.allure:allure-cucumber7-jvm:2.29.0'
+
+    // --- Logging (evita warnings de SLF4J en consola) ---
+    testImplementation 'ch.qos.logback:logback-classic:1.5.6'
+}
+
+test {
+    useJUnitPlatform()
+    // Las pruebas Serenity nunca deben hacer fallar la tarea `test` antes de generar
+    // el reporte; el plugin agrega resultados y la tarea `aggregate` evalúa el éxito.
+    testLogging {
+        showStandardStreams = true
+        events "passed", "skipped", "failed"
+    }
+    systemProperties System.getProperties()
+    finalizedBy 'aggregate'
+}
+
+// --- Allure (Módulo 10) ---
+// El adapter de Cucumber escribe los resultados; este plugin genera el HTML.
+// Generar: `.\gradlew.bat allureReport`  ·  Ver en vivo: `.\gradlew.bat allureServe`
+allure {
+    version = '2.29.0'
+    adapter {
+        // No autoinyectar adapters/aspectj: ya declaramos allure-cucumber7-jvm a mano.
+        autoconfigure = false
+        aspectjWeaver = false
+    }
+}
+
+// `gradle clean test` ejecuta las pruebas y genera el reporte en target/site/serenity

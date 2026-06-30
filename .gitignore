@@ -1,0 +1,24 @@
+# Gradle
+.gradle/
+build/
+
+# Serenity / reportes
+target/
+*.log
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Credenciales — NUNCA commitear
+*.env
+.env
+secrets.properties

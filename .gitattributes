@@ -1,0 +1,14 @@
+# Normalización de fin de línea para que el proyecto funcione igual en Windows y Linux/CI.
+* text=auto eol=lf
+
+# Scripts y archivos que DEBEN conservar su fin de línea:
+*.bat        text eol=crlf
+*.cmd        text eol=crlf
+gradlew      text eol=lf
+
+# Archivos binarios (no tocar):
+*.jar        binary
+*.png        binary
+*.jpg        binary
+*.gif        binary
+*.ico        binary

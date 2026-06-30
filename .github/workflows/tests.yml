@@ -1,0 +1,48 @@
+name: Pruebas API (Serenity + Allure)
+
+# Cuándo se ejecuta el pipeline.
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+  workflow_dispatch:   # permite lanzarlo a mano desde la pestaña Actions
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      - name: Configurar JDK 17 (Temurin)
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Permisos de ejecución al wrapper
+        run: chmod +x ./gradlew
+
+      - name: Ejecutar las pruebas
+        run: ./gradlew clean test
+        # No cortamos el pipeline al fallar: queremos generar los reportes igualmente.
+        continue-on-error: true
+
+      - name: Generar reporte Allure
+        if: always()
+        run: ./gradlew allureReport
+
+      - name: Publicar reporte Serenity
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: serenity-report
+          path: target/site/serenity
+
+      - name: Publicar reporte Allure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-report
+          path: build/reports/allure-report

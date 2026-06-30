@@ -8,6 +8,7 @@
 [![REST Assured](https://img.shields.io/badge/REST%20Assured-API-green)](https://rest-assured.io)
 [![Allure](https://img.shields.io/badge/Report-Allure-FF7B00)](https://allurereport.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Reportes](https://img.shields.io/badge/Reportes-en%20l%C3%ADnea-success?logo=githubpages)](https://gpalominoh-canvia.github.io/canvia-screenplay-rest-assured-cucumber-bdd/)
 
 Curso práctico, **parte por parte**, para dominar la automatización de pruebas de **API**
 en **Java** usando **Serenity BDD** con el patrón **Screenplay**, **REST Assured** y

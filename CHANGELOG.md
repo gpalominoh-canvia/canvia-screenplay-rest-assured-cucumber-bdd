@@ -7,6 +7,14 @@ y el versionado [SemVer](https://semver.org/lang/es/).
 
 ## [No publicado]
 
+## [1.2.0] - 2026-06-30
+
+### Añadido
+- Workflow de **GitHub Pages** (`.github/workflows/pages.yml`) que publica los reportes
+  Serenity y Allure en línea, con una página índice.
+
+## [1.1.0] - 2026-06-30
+
 ### Añadido
 - Archivos de profesionalización del repositorio: `LICENSE` (MIT), `CONTRIBUTING.md`,
   `CHANGELOG.md`, `CODE_OF_CONDUCT.md`, plantillas de PR e Issues, y badges en el README.
@@ -31,6 +39,8 @@ y el versionado [SemVer](https://semver.org/lang/es/).
 - Pipeline de CI con GitHub Actions (`.github/workflows/tests.yml`).
 - `.gitattributes` para normalizar fin de línea (gradlew en LF para CI Linux).
 
-[No publicado]: https://github.com/gpalominoh-canvia/canvia-screenplay-rest-assured-cucumber-bdd/compare/v1.0.1...HEAD
+[No publicado]: https://github.com/gpalominoh-canvia/canvia-screenplay-rest-assured-cucumber-bdd/compare/v1.2.0...HEAD
+[1.2.0]: https://github.com/gpalominoh-canvia/canvia-screenplay-rest-assured-cucumber-bdd/compare/v1.1.0...v1.2.0
+[1.1.0]: https://github.com/gpalominoh-canvia/canvia-screenplay-rest-assured-cucumber-bdd/compare/v1.0.1...v1.1.0
 [1.0.1]: https://github.com/gpalominoh-canvia/canvia-screenplay-rest-assured-cucumber-bdd/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/gpalominoh-canvia/canvia-screenplay-rest-assured-cucumber-bdd/releases/tag/v1.0.0
